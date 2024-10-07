@@ -1,0 +1,23 @@
+{
+    "LoginView": {
+        "title": "Login",
+        "email": "Email",
+        "password": "Password",
+        "buttonLogin": "Login", 
+        "name": "Name",
+        "username": "Username"
+    },
+    "RegisterView": {
+        "title": "Register",
+        "email": "Correo",
+        "password": "Contraseña",
+        "buttonRegister": "registrarse",
+        "name": "Nombre",
+        "username": "Username"
+    },
+    "NavbarView": {
+        "login": "Login",
+        "logout": "Logout",
+        "register": "Register"
+}
+}
