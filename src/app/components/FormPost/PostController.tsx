@@ -1,10 +1,11 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import ProductCard from "../FormPost/PostCard";
-import styles from './css/PostCard.module.css';
-import { URL_BASE } from "@/endpoint";
+import ProductCard from "../FormPost/PostCard"; // Asegúrate de que la ruta sea correcta
+import styles from './css/PostCard.module.css'; // Asegúrate de que la ruta sea correcta
+import { URL_BASE } from "@/endpoint"; // Asegúrate de que la ruta sea correcta
 
 const ProductsPage: React.FC = () => {
     const { data: session, status } = useSession();
@@ -36,7 +37,7 @@ const ProductsPage: React.FC = () => {
             }
 
             const data = await response.json();
-            setProducts(data);
+            setProducts(data); // Asegúrate de que `data` tenga el formato correcto
         } catch (error) {
             console.error("Error fetching products:", error);
         } finally {

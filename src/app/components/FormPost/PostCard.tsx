@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './css/PostCard.module.css';
+import styles from './css/PostCard.module.css'; // Asegúrate de que la ruta sea correcta
 
 interface Product {
     id: string;
