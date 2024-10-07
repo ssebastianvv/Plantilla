@@ -1,25 +1,23 @@
 import type { Metadata } from "next";
-// import localFont from "next/font/local";
-import "./globals.css";
-import { Roboto } from "next/font/google";
+import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages } from "next-intl/server";
-import ProviderSessionAuth from "./context/SessionAuthProvider";
-import { Providers } from "./redux/provider";
+import { getLocale,getMessages } from "next-intl/server";
+import ProviderSession from "./Provider";
+import React from "react";
+import Navbar from "../app/components/ui/Navbar/Navbar";
+import "./globals.css";
+import SelectLanguage from "../app/components/ui/SelectLanguage/SelectLanguage";
 
-
-const roboto = Roboto({ subsets: ["latin"], weight: ["300", "400", "700", "900"], });
-
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+});
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -31,24 +29,18 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const locale = await getLocale()
-  const messages = await getMessages()
-
+  const locale = await getLocale();
+  const messages = await getMessages();
   return (
     <html lang={locale}>
-      <body
-        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        className={roboto.className}
-      >
-        
-          <NextIntlClientProvider messages={messages}>
-            <ProviderSessionAuth>
-              <Providers>
-              {children}
-              </Providers>
-            </ProviderSessionAuth>
-          </NextIntlClientProvider>
-
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <NextIntlClientProvider messages={messages}>
+          <ProviderSession>
+          <Navbar/>
+          <SelectLanguage />
+            {children}
+          </ProviderSession>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
