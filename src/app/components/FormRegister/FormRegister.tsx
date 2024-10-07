@@ -4,6 +4,7 @@ import Button from "../ui/Button/Button";
 import { IFormDataRegister } from "../../interface/formDataRegister"; 
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { URL_BASE } from "@/endpoint";
 
 interface FormRegisterProps {
     onClose: () => void;
@@ -22,7 +23,7 @@ export default function FormRegister({ onClose }: FormRegisterProps): React.Reac
 
     const handleRegister = async (e: React.FormEvent): Promise<void> => {
         e.preventDefault();
-        const response = await fetch('http://192.168.88.39:7000/auth/signup', {
+        const response = await fetch(`${URL_BASE}auth/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -32,8 +33,8 @@ export default function FormRegister({ onClose }: FormRegisterProps): React.Reac
 
         if (response.ok) {
             alert("Usuario registrado exitosamente :)");
-            onClose(); // Cierra el modal al registrar
-            setFormData(initialFormData); // Reinicia el formulario
+            onClose(); 
+            setFormData(initialFormData); 
         } else {
             const result = await response.json();
             alert(`Error en el registro: ${result.message}`);
