@@ -23,19 +23,19 @@ export default function FormLogin({ onClose }: FormLoginProps): React.ReactEleme
 
     const handleLogin = async (e: React.FormEvent): Promise<void> => {
         e.preventDefault();
-        setError(null); // Resetear error antes de iniciar sesión
+        setError(null); 
 
         const res = await signIn("credentials", {
             redirect: false,
-            email: formData.username,
+            username: formData.username,
             password: formData.password,
         });
 
         if (res?.error) {
-            setError("Inicio de sesión fallido. Verifica tus credenciales."); // Manejo de error
+            setError("Inicio de sesión fallido. Verifica tus credenciales."); 
         } else {
-            onClose(); // Cerrar modal al iniciar sesión exitosamente
-            window.location.href = "/posts"; // Redirigir a la vista de posts
+            onClose(); 
+            window.location.href = "/posts"; 
         }
     };
 
@@ -50,7 +50,7 @@ export default function FormLogin({ onClose }: FormLoginProps): React.ReactEleme
     return (
         <form onSubmit={handleLogin}>
             <h2>{translation("title")}</h2>
-            {error && <p style={{ color: 'red' }}>{error}</p>} {/* Mostrar error si existe */}
+            {error && <p style={{ color: 'red' }}>{error}</p>} {}
             <GroupInput
                 label={translation("username")}
                 type="text"
