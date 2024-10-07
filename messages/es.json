@@ -4,14 +4,16 @@
         "email": "Correo",
         "password": "Contraseña",
         "buttonLogin": "Loguearse",
-        "name": "Nombre"
+        "name": "Nombre",
+        "username": "nombre de usuario"
     },
     "RegisterView": {
         "title": "Registrarse",
         "email": "Correo",
         "password": "Contraseña",
         "buttonRegister": "registrarse",
-        "name": "Nombre"
+        "name": "Nombre",
+        "username": "nombre de usuario"
     },
     "NavbarView": {
         "login": "Loguearse",
